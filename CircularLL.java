@@ -9,7 +9,6 @@ public class CircularLL {
             this.next = null;
         }
     }
-
     Node first = null;
     Node last = null;
 
