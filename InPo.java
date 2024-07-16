@@ -7,7 +7,7 @@ public class InPo {
         int rank = 0;
 
         StringBuilder ans = new StringBuilder();
-        String infix = "(a+b*c/d-e+f/g/(h+i))";
+        String infix = "(a+b*c)";
 
         for(int i=0; i<infix.length() ;i++){
             if(infix.charAt(i) == '('){
