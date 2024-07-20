@@ -1,31 +1,27 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import org.w3c.dom.Node;
-
-public class SortLL {
-
+public class SortLL{
     class Node{
         int data;
         Node next;
-
+    
         Node(int data){
             this.data = data;
             this.next = null;
         }
     }
-    Node first = null;
 
+    Node first = null;
+    
     public void insertAtFirst(int data){
         Node newNode = new Node(data);
         if(first == null){
             first = newNode;
             return;
         }
-
+    
         newNode.next = first;
         first = newNode;
     }
-
+    
     public void insertAtLast(int data){
         Node newNode = new Node(data);
 
@@ -54,30 +50,58 @@ public class SortLL {
         }
         System.out.print("null");
         System.out.println(" ");
-
     }
 
-    public void converToArr(){
+    public Node sortList(Node first) {
+        if(first == null || first.next == null) return first;
 
-        ArrayList<Integer> arr = new ArrayList<Integer>();
+        Node slow = first;
+        Node fast = first.next;
 
-        Node curr = first;
-
-        while(curr.next != null){
-            arr.add(curr.data);
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
         }
 
+        Node right = slow.next;
+        slow.next = null;
+
+        Node l1 = sortList(first);
+        Node l2 = sortList(right);
+
+        return merge(l1, l2);
     }
 
+    public static Node merge(Node l1, Node l2) {
+        Node dummy = new Node(-1);
+        Node temp = dummy;
+
+        while (l1 != null && l2 != null) {
+            if (l1.data < l2.data) {
+                temp.next = l1;
+                l1 = l1.next;
+            } else {
+                temp.next = l2;
+                l2 = l2.next;
+            }
+            temp = temp.next;
+        }
+
+        if (l1 != null) temp.next = l1;
+        else temp.next = l2;
+
+        return dummy.next;
+    }
 
     public static void main(String[] args) {
+        
         SortLL l1 = new SortLL();
 
-        l1.insertAtLast(0);
-        l1.insertAtLast(8);
-        l1.insertAtLast(1);
-        l1.insertAtLast(4);
-        l1.insertAtLast(7);
+        l1.insertAtFirst(2);
+        l1.insertAtFirst(3);
+        l1.insertAtFirst(4);
+        l1.insertAtFirst(9);
+        l1.insertAtFirst(1);
 
         l1.printList();
     }

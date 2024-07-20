@@ -3,7 +3,8 @@ import java.util.ArrayList;
 public class MergeSort {
     public static void main(String[] args) {
         
-        int arr[] = new int[]{3,2,4,1,3};
+        int arr[] = {3,2,4,1,3}; 
+
         int high = arr.length - 1;
         Solution s = new Solution();
         s.mergesort(arr, 0,high);
@@ -14,6 +15,7 @@ public class MergeSort {
 
     }
 }
+
 class Solution{
     public static void merge(int[] arr,int low,int mid,int high){
         ArrayList<Integer> temp = new ArrayList<>();
