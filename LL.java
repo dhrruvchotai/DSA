@@ -21,20 +21,20 @@ public class LL {
         first = newNode;
     }
 
-        public void insertAtLast(int data){
-            Node newNode = new Node(data);
+    public void insertAtLast(int data){
+        Node newNode = new Node(data);
 
-            if(first == null){
-                first = newNode;
-                return;
-            }
-
-            Node currentNode = first;
-            while(currentNode.next != null){
-                currentNode = currentNode.next;
-            }
-            currentNode.next = newNode;
+        if(first == null){
+            first = newNode;
+            return;
         }
+
+        Node currentNode = first;
+        while(currentNode.next != null){
+            currentNode = currentNode.next;
+        }
+        currentNode.next = newNode;
+    }
 
 
     public void deleteFirst(){
