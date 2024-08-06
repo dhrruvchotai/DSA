@@ -1,4 +1,4 @@
-public class DeleteAlternateDLL {
+    public class DeleteAlternateDLL {
     class Node
     {
         int data;

@@ -73,8 +73,7 @@ class CopyList{
 
             if(currNode2 == null){
                 this.first = newNode;
-                currNode2 = newNode;
-                
+                currNode2 = newNode;   
             }
             
             else{
