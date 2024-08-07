@@ -78,7 +78,7 @@ class MyCircularQueue{
             System.out.println(" ");
             System.out.println("Queue["+i+"] is : "+q[i]);
         }
-        
+
         System.out.println(" ");
         System.out.println("Queue["+i+"] is : "+q[i]);
 

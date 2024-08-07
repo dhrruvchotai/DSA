@@ -1,4 +1,4 @@
-public class LL {
+    public class LL {
     class Node{
         int data;
         Node next;

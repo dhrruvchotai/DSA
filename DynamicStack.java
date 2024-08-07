@@ -89,13 +89,13 @@ public class DynamicStack {
         Node cuurentNode = top;
 
         if(indxFromTop <= 0){
-            System.out.println("Stack Underflow!!");
+            System.out.println("Enter a valid index!!");
             return;
         }
 
         if(indxFromTop > length){
             System.out.println(" ");
-            System.out.println("Stack Underflow!!");
+            System.out.println("Enter a valid!!");
             return;
         }
 
