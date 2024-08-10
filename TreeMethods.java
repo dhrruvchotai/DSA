@@ -90,6 +90,10 @@ public class TreeMethods {
         return Math.max(diam3,Math.max(diam1, diam2));
     }
 
+
+    // CURRENTLY PENDING.
+
+
     // private static int diam = 0;
 
     // public static void optDiameter(Node root){
@@ -108,6 +112,11 @@ public class TreeMethods {
     // }
 
 
+
+    // MAKE A FUNCTION TO CHECK THE SUBTREE IS PART OF MAIN TREE OR NOT(PENDING.)
+
+
+    
     public static void main(String[] args) {
 
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
