@@ -16,6 +16,8 @@ public class BasicTreeMethods {
         }
     }
 
+    public static Node root;
+
     static class BinaryTree{
 
         static int index = -1;
@@ -69,6 +71,12 @@ public class BasicTreeMethods {
     }
 
     public static void levelOrder(Node root){
+
+        if(root == null){
+            System.out.println("The tree is empty.");
+            return;  
+        } 
+
         
         Queue<Node> q = new LinkedList<>();
 
@@ -97,12 +105,59 @@ public class BasicTreeMethods {
         }
 
     }
+    //STLL TO BE UPDATED!!!
+    public static boolean deleteNode(Node root,int val){
+
+        if(BasicTreeMethods.root.data == val){
+           BasicTreeMethods.root = null;
+           return false;
+        }
+            
+        if(root == null) return false;
+        if(root.data == val) return true;
+
+        boolean left  = deleteNode(root.left, val);
+        boolean right = deleteNode(root.right, val);
+
+        if(left){
+            root.left = null;
+            return false;
+        }
+        else if(right){
+            root.right = null;
+            return false;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+    //LERAN!!!
+    // public static Node serchNode(Node root,int val){
+        
+
+    //     if(root == null || (root.left == null && root.right == null)) return null;
+
+    //     if(root.left.data == val){
+    //         return root.left;
+    //     }
+    //     else if(root.right.data == val){
+    //         return root.right;
+    //     }
+
+    //     serchNode(root.left, val);
+    //     serchNode(root.right, val);
+
+    //     return null;
+    // }
+
     public static void main(String[] args) {
         
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
 
         BinaryTree tree = new BinaryTree();
-        Node root = tree.buildTree(nodes);
+        root = tree.buildTree(nodes);
 
         System.out.println("The root node is : "+root.data );
         
@@ -124,6 +179,9 @@ public class BasicTreeMethods {
         System.out.println("levelOrder is :");
         levelOrder(root);
 
+        deleteNode(root,1);
+        System.out.println("After deleting 1 : ");
+        levelOrder(root);
 
 
     }
