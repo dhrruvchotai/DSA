@@ -154,7 +154,7 @@ public class BasicTreeMethods {
 
     public static void main(String[] args) {
         
-        int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
+        int nodes[] = {50,25,22,15,-1,-1,-1,40,30,-1,-1,-1,75,60,-1,-1,80,-1,90,-1,-1};
 
         BinaryTree tree = new BinaryTree();
         root = tree.buildTree(nodes);
