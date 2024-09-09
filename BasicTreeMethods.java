@@ -105,7 +105,31 @@ public class BasicTreeMethods {
         }
 
     }
-    //STLL TO BE UPDATED!!!
+
+    public static boolean serchNode(Node root,int val){
+        
+        if(root == null) return false;
+
+        if(root.data == val) return true;
+
+        Queue<Node> q = new LinkedList<>();
+
+        q.add(root);
+
+        while(!q.isEmpty()){
+
+            Node temp = q.poll();
+
+            if(temp.data == val) return true;
+
+            if(temp.left != null) q.add(temp.left);
+            if(temp.right != null)  q.add(temp.right);
+
+        }
+
+        return false;
+    }
+    
     public static boolean deleteNode(Node root,int val){
 
         if(BasicTreeMethods.root.data == val){
@@ -132,25 +156,6 @@ public class BasicTreeMethods {
         }
 
     }
-
-    //LERAN!!!
-    // public static Node serchNode(Node root,int val){
-        
-
-    //     if(root == null || (root.left == null && root.right == null)) return null;
-
-    //     if(root.left.data == val){
-    //         return root.left;
-    //     }
-    //     else if(root.right.data == val){
-    //         return root.right;
-    //     }
-
-    //     serchNode(root.left, val);
-    //     serchNode(root.right, val);
-
-    //     return null;
-    // }
 
     public static void main(String[] args) {
         
@@ -179,10 +184,14 @@ public class BasicTreeMethods {
         System.out.println("levelOrder is :");
         levelOrder(root);
 
-        deleteNode(root,1);
+        deleteNode(root,75);
         System.out.println("After deleting 1 : ");
         levelOrder(root);
 
+       boolean isFound = serchNode(root, 15);
+
+       if(isFound) System.out.println("The Node is found.");
+       else System.out.println("The Node is not found.");
 
     }
 }

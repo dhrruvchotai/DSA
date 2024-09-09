@@ -2,16 +2,16 @@ def bucketSort(arr):
 
     if(len(arr) == 0): return arr
 
-    bucketCount = len(arr)
+    n = len(arr)
     maxv,minv = max(arr),min(arr)
-    bucketSize = (maxv-minv)/bucketCount
+    bucketSize = (maxv-minv)/n
 
-    buckets = [[] for _ in range(bucketCount)]
+    buckets = [[] for _ in range(n)]
 
     for num in arr:
         
         index = (int)((num - minv)/bucketSize)
-        if(index == bucketCount): index -= 1
+        if(index == n): index -= 1
         buckets[index].append(num)
 
     ans = []
