@@ -23,16 +23,20 @@ public class BST {
         }
 
         // inOrder(root);
-        // boolean isFound = serch(root, 9);
+        // boolean isFound = search(root, 9);
 
         // System.out.println(" ");
         // if(isFound) System.out.println("The value is in BST.");
         // else System.out.println("The value is not in the BST.");
 
 
-        delete(root,99);
+        System.out.println("Before deleting the elemt");
+        inOrder(root);
+
         System.out.println(" ");
-        System.out.println("After deleting 23 : ");
+
+        delete(root,12);
+        System.out.println("After deleting the elemt : ");
         inOrder(root);
     }
 
@@ -61,16 +65,16 @@ public class BST {
 
     }
 
-    public static boolean serch(Node root,int key){    
+    public static boolean search(Node root,int key){    
 
         if(root == null) return false;
         if(root.data == key) return true;
 
         if(key < root.data){
-            return serch(root.left, key);
+            return search(root.left, key);
         }
         if(key > root.data){
-            return serch(root.right, key);
+            return search(root.right, key);
         }
 
         return false;
@@ -79,44 +83,46 @@ public class BST {
     public static Node delete(Node root,int key){
 
         if(root == null){
-            System.out.println("Tree is empty.");
             return null;
         }
 
-        if(root.left.data == key){
-            Node rightNode = root.left.right;
-
-            if(rightNode == null){
-                root.left = root.left.left;
-                return root;
-            }
-
-            while(rightNode.left != null){
-                rightNode = rightNode.left;
-            }
-            
-            rightNode.left = root.left.left;
-            root.left = root.left.right;
-        }
-
-        else if(root.right.data == key){
-            Node rightNode = root.right.right;
-
-            while(rightNode.left != null){
-                rightNode = rightNode.left;
-            }
-
-            rightNode.left = root.right.left;
-            root.right = root.right.right;
-        }
-
         if(key < root.data){
-            delete(root.left, key);
+            root.left = delete(root.left, key);
         }
-        if(key > root.data){
-            delete(root.right, key);
+        else if(key > root.data){
+            root.right = delete(root.right, key);
+        }
+        else{
+
+            //case 1 : elemt you want to delete has no child
+            if(root.left == null && root.right == null){
+                return null;
+            }
+
+            //case 2 : elmt you want to delete has only one child either element or child.
+            if(root.left == null){
+                return root.right;
+            }
+            else if(root.right == null){
+                return root.left;
+            }
+
+            //case 3 : elmt you want to delete have both childs left and right
+            root.data = findMin(root.right);
+            root.right = delete(root.right, key);
+
+        }  
+        return root;
+    }
+
+    public static int findMin(Node root){
+        int min = root.data;
+
+        while(root.left != null){
+            min = root.left.data;
+            root = root.left;
         }
 
-        return root;
+        return min;
     }
 }
