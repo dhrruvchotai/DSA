@@ -112,6 +112,7 @@
             return;
         }
         Node cuurrentNode = first;
+        
         while(cuurrentNode != null){
             System.out.print(cuurrentNode.data + " -> ");
             cuurrentNode = cuurrentNode.next;

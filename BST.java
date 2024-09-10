@@ -7,6 +7,8 @@ public class BST {
 
         Node(int data){
             this.data = data;
+            this.left = null;
+            this.right = null;
         }    
     }
 
@@ -20,12 +22,18 @@ public class BST {
             root = insert(root, arr[i]);
         }
 
-        inOrder(root);
-        boolean isFound = serch(root, 9);
+        // inOrder(root);
+        // boolean isFound = serch(root, 9);
 
+        // System.out.println(" ");
+        // if(isFound) System.out.println("The value is in BST.");
+        // else System.out.println("The value is not in the BST.");
+
+
+        delete(root,99);
         System.out.println(" ");
-        if(isFound) System.out.println("The value is in BST.");
-        else System.out.println("The value is not in the BST.");
+        System.out.println("After deleting 23 : ");
+        inOrder(root);
     }
 
     public static Node insert(Node root ,int val){
@@ -66,5 +74,49 @@ public class BST {
         }
 
         return false;
+    }
+
+    public static Node delete(Node root,int key){
+
+        if(root == null){
+            System.out.println("Tree is empty.");
+            return null;
+        }
+
+        if(root.left.data == key){
+            Node rightNode = root.left.right;
+
+            if(rightNode == null){
+                root.left = root.left.left;
+                return root;
+            }
+
+            while(rightNode.left != null){
+                rightNode = rightNode.left;
+            }
+            
+            rightNode.left = root.left.left;
+            root.left = root.left.right;
+        }
+
+        else if(root.right.data == key){
+            Node rightNode = root.right.right;
+
+            while(rightNode.left != null){
+                rightNode = rightNode.left;
+            }
+
+            rightNode.left = root.right.left;
+            root.right = root.right.right;
+        }
+
+        if(key < root.data){
+            delete(root.left, key);
+        }
+        if(key > root.data){
+            delete(root.right, key);
+        }
+
+        return root;
     }
 }
