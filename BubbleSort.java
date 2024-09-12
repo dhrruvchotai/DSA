@@ -13,7 +13,8 @@ public class BubbleSort {
         }
         System.out.println("the arr is");  for(int i=0;i<arr.length;i++){
             
-            System.out.println(arr[i]);
+        System.out.println(arr[i]);
+        
         }
     }
 }
