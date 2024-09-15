@@ -14,15 +14,18 @@ public class BST {
 
     public static void main(String[] args) {
 
-        int arr[] = {50,23,12,25,9,8,75,70,60,99};
+        int arr[] = {50,23,5,2,7};
 
         Node root = null;
 
         for(int i=0;i<arr.length;i++){
             root = insert(root, arr[i]);
+            if(checkCritical(root)){
+                root = rightRotation(root);
+            }
         }
-
-        // inOrder(root);
+        // System.out.println(root.data);
+        preOrder(root);
         // boolean isFound = search(root, 9);
 
         // System.out.println(" ");
@@ -51,7 +54,7 @@ public class BST {
         //     System.out.print(weightarr[i]);
         // } 
 
-        printAllWeight(root);
+        // printAllWeight(root);
         
     }
 
@@ -160,6 +163,15 @@ public class BST {
 
     }
 
+    public static void newParentder(Node root){
+        if(root == null) return;
+
+        System.out.print(root.data+" ");
+        inOrder(root.left);
+        inOrder(root.right);
+
+    }
+
     public static void preOrder(Node root){
         if(root == null) return;
 
@@ -203,4 +215,50 @@ public class BST {
        return ans;
     }
 
+    public static boolean checkCritical(Node root){
+
+        if(root == null) return false;
+
+        int weightarr[] = new int[3];
+
+        weightarr = weight(root);
+
+        if(weightarr[2] >= 2){
+            return true;
+        }
+        else{
+            checkCritical(root.left);
+            checkCritical(root.right);
+        }
+        return false;
+    }
+
+    public static boolean checkCase1(Node root,int key){
+
+        if(root == null || root.left == null) return false;
+
+        Node temp = root.left;
+        temp = temp.left;
+
+        while(temp != null){
+            if(temp.data == key){
+                return true;
+            }
+            temp = temp.left;
+        }
+        return false;
+    }
+
+    public static Node rightRotation(Node root){
+
+        Node lcRightSubTree = root.left.right;
+        root.left.right = null;
+
+        Node newParent = root.left;
+        newParent.right = root;
+
+        newParent.right.left = lcRightSubTree;
+
+        return newParent;
+    }
 }
