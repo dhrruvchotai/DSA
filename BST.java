@@ -14,18 +14,20 @@ public class BST {
 
     public static void main(String[] args) {
 
-        int arr[] = {50,23,5,2,7};
+        int arr[] = {50,23,5,2,1};
 
         Node root = null;
 
         for(int i=0;i<arr.length;i++){
             root = insert(root, arr[i]);
-            if(checkCritical(root)){
+            if(checkCritical(root) && checkCase1(root, arr[i])){
                 root = rightRotation(root);
             }
         }
         // System.out.println(root.data);
         preOrder(root);
+        System.out.println(" ");
+        inOrder(root);
         // boolean isFound = search(root, 9);
 
         // System.out.println(" ");
