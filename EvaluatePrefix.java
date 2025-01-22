@@ -5,7 +5,7 @@ public class EvaluatePrefix {
     {
 
         Stack<Integer> st = new Stack<>();
-        String infix = "/42";
+        String infix = "- + 7 / 4 2 5";
 
 
         for(int i=infix.length() -1 ;i>=0;i--){

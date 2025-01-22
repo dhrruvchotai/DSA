@@ -14,7 +14,7 @@
         Node newNode = new Node(data);
         if(first == null){
             first = newNode;
-            return;
+            // // // // return;
         }
 
         newNode.next = first;
@@ -56,14 +56,21 @@
             first = null;
             return;
         }
-        Node secondLast = first;
-        Node last = first.next;
+        // Node secondLast = first;
+        // Node last = first.next;
 
-        while(last.next != null){
-            secondLast = secondLast.next;
-            last = last.next;
+        // while(last.next != null){
+        //     secondLast = secondLast.next;
+        //     last = last.next;
+        // }
+        // secondLast.next = null;
+
+        Node curr = first;
+
+        while(curr.next.next != null){
+            curr = curr.next;
         }
-        secondLast.next = null;
+        curr.next = null;
     }
 
     public void insertOrd(int x){
@@ -131,6 +138,8 @@
         list.insertAtLast(8);
 
         list.insertOrd(3);
+        list.deleteLast();
         list.printList();
+
     }
 }

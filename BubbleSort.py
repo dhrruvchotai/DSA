@@ -1,4 +1,4 @@
-list = [1,2,3,4,5]
+list = [15,25,3145,4131,5313]
 
 def bubbleSort(list,n):
     last = n-1

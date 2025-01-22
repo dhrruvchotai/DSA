@@ -79,7 +79,7 @@ class Stack1{
     int s[];
 
     Stack1(){
-            System.out.println("Enter size of an array : ");
+            System.out.println("Enter size0 of an array : ");
              n = sc.nextInt();
              s = new int[n];
     }

@@ -14,7 +14,7 @@ public class BST {
 
     public static void main(String[] args) {
 
-        int arr[] = {50,23,5,2,1};
+        int arr[] = {50,23,5,2};
 
         Node root = null;
 
@@ -26,7 +26,7 @@ public class BST {
         }
         // System.out.println(root.data);
         preOrder(root);
-        System.out.println(" ");
+        System.out.println("");
         inOrder(root);
         // boolean isFound = search(root, 9);
 
@@ -161,15 +161,6 @@ public class BST {
 
         inOrder(root.left);
         System.out.print(root.data+" ");
-        inOrder(root.right);
-
-    }
-
-    public static void newParentder(Node root){
-        if(root == null) return;
-
-        System.out.print(root.data+" ");
-        inOrder(root.left);
         inOrder(root.right);
 
     }
