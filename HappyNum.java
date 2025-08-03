@@ -23,9 +23,9 @@ public class HappyNum {
         }
         return num == 1;
     }
-    // In Happy Number theory, if a number is not happy,
-    // it will always eventually fall into a repeating cycle:
-    // 4 → 16 → 37 → 58 → 89 → 145 → 42 → 20 → 4 → ...
+        // In Happy Number theory, if a number is not happy,
+        // it will always eventually fall into a repeating cycle:
+        // 4 → 16 → 37 → 58 → 89 → 145 → 42 → 20 → 4 → ...
      public static boolean isHappy2(int num) {
         while (num != 1 && num != 4) {
             num = getSumOfSquaresOfDigits(num);
