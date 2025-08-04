@@ -1,25 +1,25 @@
 public class PrintNumberCountString {
     public static void main(String[] args) {
         String str = "d2a3bac5z".toLowerCase();
-        String ans = "";
+        StringBuilder ans = new StringBuilder();
         int index = 0;
 
-        while(index < str.length()-1){
-            char firstCh = str.charAt(index);
-            char secondCh = str.charAt(index+1);
-             
-            if((firstCh >= '1' && firstCh <= '9') && (secondCh >= 'a' && secondCh <= 'z')){
-                for(int i = 0; i < Integer.parseInt(firstCh + "");i++){
-                    ans += secondCh;
+        while(index < str.length()) {
+            char ch = str.charAt(index);
+
+            if(Character.isDigit(ch) && index + 1 < str.length() && Character.isLetter(str.charAt(index + 1))) {
+                int count = ch - '0';
+                char letter = str.charAt(index + 1);
+                for(int i = 0; i < count; i++) {
+                    ans.append(letter);
                 }
-                index+=2;
-            }
-            else{
-                ans += firstCh;
+                index += 2;
+            } else {
+                ans.append(ch);
                 index++;
             }
         }
 
-        System.out.println("Ans is "+ans);
+        System.out.println("Ans is " + ans.toString());
     }
 }
