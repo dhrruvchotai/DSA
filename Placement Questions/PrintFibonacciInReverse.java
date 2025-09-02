@@ -28,6 +28,6 @@ public class PrintFibonacciInReverse {
         if(num < 0) return;
         int val = getNthTermOfFib(num);
         System.out.print(val + " ");
-        printReverseFibonacci(num - 1);
+        printReverseFibonacci(num);
     }
 }
